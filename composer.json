@@ -1,0 +1,12 @@
+{
+	"name": "redaxmedia/porn-terminal",
+	"description": "Show random porn videos in your terminal",
+	"version": "1.0.0",
+	"license": "GPL-3.0",
+	"require":
+	{
+		"lastguest/pixeler": "1.1.0",
+		"nategood/commando": "0.2.9",
+		"php": ">5.4"
+	}
+}

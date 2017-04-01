@@ -1,0 +1,69 @@
+#!/usr/bin/env php
+<?php
+
+error_reporting(E_ERROR | E_PARSE);
+
+/* autoload */
+
+include dirname(__DIR__) . '/vendor/autoload.php';
+
+/* set command */
+
+$command = new Commando\Command();
+$command
+	->option('e')
+	->aka('api-endpoint')
+	->describe('API endpoint (see: https://api.porn.com')
+	->default('/videos/find.json')
+	->required()
+	->option('p')
+	->aka('api-parameter')
+	->describe('API parameter (see: https://api.porn.com)')
+	->default('?tags=big-tits')
+	->option('r')
+	->aka('image-resize')
+	->describe('Resize the image')
+	->default(0.5)
+	->option('i')
+	->aka('image-invert')
+	->describe('Invert the image')
+	->boolean()
+	->option('w')
+	->aka('image-weight')
+	->describe('Weight of the image')
+	->default(1)
+	->option('d')
+	->aka('image-dither')
+	->describe('Dither of the image')
+	->default(1)
+	->option('m')
+	->aka('video-metadata')
+	->describe('Show video metadata')
+	->default(1);
+
+/* handle content */
+
+$url = 'https://api.porn.com' . $command['e'] . $command['p'];
+$content = json_decode(file_get_contents($url));
+
+/* randomize */
+
+$total = count($content->result);
+$result = $content->result{mt_rand(0, $total)};
+
+/* handle image */
+
+if ($result)
+{
+	$image = Pixeler\Pixeler::image($result->thumb, $command['r'], $command['i'], $command['w'], $command['d']);
+	$output = $image . '.' . PHP_EOL;
+	if ($command['m'])
+	{
+		$output .= 'Title: ' . $result->title . PHP_EOL . 'URL: ' . $result->url . PHP_EOL . 'Rating: ' . $result->rating . PHP_EOL . 'Duration: ' . $result->duration . 's' . PHP_EOL;
+	}
+	echo $output;
+}
+else
+{
+	$command->beepOnError();
+}
