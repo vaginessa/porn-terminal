@@ -28,7 +28,7 @@ Options
      API parameter (see: https://api.porn.com)
 
 
--d/--image-dither <argument>
+-d/--image-dither
      Dither of the image
 
 
