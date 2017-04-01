@@ -35,7 +35,7 @@ $command
 	->aka('image-dither')
 	->describe('Dither of the image')
 	->default(1)
-    ->boolean()
+	->boolean()
 	->option('g')
 	->aka('image-grayscale')
 	->describe('Grayscale of the image')
@@ -61,9 +61,9 @@ if ($result)
 {
 	$image = Pixeler\Pixeler::image($result->thumb, $command['r'], $command['i'], $command['w'], $command['d']);
 	if ($command['g'])
-    {
-        $image->clearColors();
-    }
+	{
+		$image->clearColors();
+	}
 	$output .= $image . PHP_EOL;
 	if ($command['m'])
 	{
