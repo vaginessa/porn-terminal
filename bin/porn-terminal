@@ -41,8 +41,12 @@ $command
 	->describe('Grayscale of the image')
 	->boolean()
 	->option('m')
-	->aka('video-metadata')
-	->describe('Metadata of the video')
+	->aka('image-metadata')
+	->describe('Metadata of the image')
+	->boolean()
+	->option('o')
+	->aka('open-browser')
+	->describe('Open URL in browser')
 	->boolean();
 
 /* handle content */
@@ -78,6 +82,10 @@ if ($result)
 		if ($result->url)
 		{
 			$output .= 'URL: ' . $result->url . PHP_EOL;
+			if ($command['o'])
+			{
+				exec('xdg-open ' . $result->url);
+			}
 		}
 		if ($result->rating)
 		{

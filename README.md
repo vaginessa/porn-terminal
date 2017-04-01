@@ -23,9 +23,9 @@ Examples
 
 Run `php bin/porn-terminal -p ?tags={tag}` to search for {tag} in videos.
 
-Run `php bin/porn-terminal -e /actors/find.json -p ?order=views&limit=1000` for the top 1000 actors.
+Run `php bin/porn-terminal -e /actors/find.json -p ?order=rating` for the top actors.
 
-Run `php bin/porn-terminal -e /actors/find.json -p ?name={name}` to search for {name} in actors.
+Run `php bin/porn-terminal -e /dvds/find.json -p ?order=rating` for the top dvds.
 
 
 Options
@@ -58,6 +58,10 @@ Run `php bin/porn-terminal --help` for help:
      Invert the image
 
 
+-m/--image-metadata
+     Metadata of the image
+
+
 -r/--image-resize <argument>
      Resize the image
 
@@ -66,6 +70,6 @@ Run `php bin/porn-terminal --help` for help:
      Weight of the image
 
 
--m/--video-metadata
-     Metadata of the video
+-o/--open-browser
+     Open URL in browser
 ```
