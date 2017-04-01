@@ -64,10 +64,29 @@ if ($result)
 	{
 		$image->clearColors();
 	}
-	$output .= $image;
+	$output = $image;
 	if ($command['m'])
 	{
-		$output .= 'Title: ' . $result->title . PHP_EOL . 'URL: ' . $result->url . PHP_EOL . 'Rating: ' . $result->rating . PHP_EOL . 'Duration: ' . $result->duration . 's' . PHP_EOL;
+		if ($result->title)
+		{
+			$output .= 'Title: ' . $result->title . PHP_EOL;
+		}
+		if ($result->name)
+		{
+			$output .= 'Name: ' . $result->name . PHP_EOL;
+		}
+		if ($result->url)
+		{
+			$output .= 'URL: ' . $result->url . PHP_EOL;
+		}
+		if ($result->rating)
+		{
+			$output .= 'Rating: ' . $result->rating . PHP_EOL;
+		}
+		if ($result->duration)
+		{
+			$output .= 'Duration: ' . $result->duration . 's' . PHP_EOL;
+		}
 	}
 	echo $output;
 }

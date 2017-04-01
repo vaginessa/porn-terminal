@@ -1,7 +1,7 @@
 Porn Terminal
 =============
 
-> Show random porn videos in your terminal.
+> Show random porn in your terminal.
 
 [![Build Status](https://img.shields.io/travis/redaxmedia/porn-terminal.svg)](https://travis-ci.org/redaxmedia/porn-terminal)
 [![PHP 7 Ready](https://php7ready.timesplinter.ch/redaxmedia/porn-terminal/badge.svg)](https://travis-ci.org/redaxmedia/porn-terminal)
@@ -18,8 +18,20 @@ Usage
 Run `php bin/porn-terminal` in your terminal.
 
 
+Examples
+--------
+
+Run `php bin/porn-terminal -p ?tags={tag}` to search for {tag} in videos.
+
+Run `php bin/porn-terminal -e /actors/find.json -p ?order=views&limit=1000` for the top 1000 actors.
+
+Run `php bin/porn-terminal -e /actors/find.json -p ?name={name}` to search for {name} in actors.
+
+
 Options
 -------
+
+Run `php bin/porn-terminal --help` for help:
 
 ```
 -e/--api-endpoint <argument>
