@@ -9,11 +9,7 @@ Porn Terminal
 [![License](https://img.shields.io/packagist/l/redaxmedia/porn-terminal.svg)](https://packagist.org/packages/redaxmedia/porn-terminal)
 [![GitHub Stats](https://img.shields.io/badge/github-stats-ff5500.svg)](http://githubstats.com/redaxmedia/porn-terminal)
 
-
-Screenshot
-----------
-
-![Porn Terminal](http://i.imgur.com/7qbiQnz.png)
+![Porn Terminal](https://i.imgur.com/tLgfkDQ.png)
 
 
 Usage
