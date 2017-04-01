@@ -13,7 +13,7 @@ $command = new Commando\Command();
 $command
 	->option('e')
 	->aka('api-endpoint')
-	->describe('API endpoint (see: https://api.porn.com')
+	->describe('API endpoint (see: https://api.porn.com)')
 	->default('/videos/find.json')
 	->required()
 	->option('p')
