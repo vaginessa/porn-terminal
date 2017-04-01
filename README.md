@@ -32,6 +32,10 @@ Options
      Dither of the image
 
 
+-g/--image-grayscale
+     Grayscale of the image
+
+
 --help
      Show the help page for this command.
 
@@ -48,6 +52,6 @@ Options
      Weight of the image
 
 
--m/--video-metadata <argument>
-     Show video metadata
+-m/--video-metadata
+     Metadata of the video
 ```

@@ -21,4 +21,4 @@ install:
 - composer install
 
 script:
-- bin/porn-terminal
+- bin/porn-terminal -m
