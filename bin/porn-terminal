@@ -100,14 +100,14 @@ if ($result)
 
 	if ($result->url && $command['o'])
 	{
-	    if (PHP_OS === 'Linux')
-        {
+		if (PHP_OS === 'Linux')
+		{
 			exec('xdg-open ' . $result->url);
-        }
-        else
-        {
+		}
+		else
+		{
 			exec('open ' . $result->url);
-        }
+		}
 	}
 	echo $output;
 }
