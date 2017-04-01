@@ -13,7 +13,7 @@ Porn Terminal
 Screenshot
 ----------
 
-[![Porn Terminal](http://i.imgur.com/7qbiQnz.png)]
+![Porn Terminal](http://i.imgur.com/7qbiQnz.png)
 
 
 Usage
