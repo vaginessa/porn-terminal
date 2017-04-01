@@ -3,9 +3,16 @@
 	"description": "Show random porn videos in your terminal",
 	"version": "1.0.0",
 	"license": "GPL-3.0",
+	"repositories":
+	[
+		{
+			"type": "git",
+			"url": "https://github.com/redaxmedia/pixeler.git"
+		}
+	],
 	"require":
 	{
-		"lastguest/pixeler": "1.1.0",
+		"lastguest/pixeler": "dev-master",
 		"nategood/commando": "0.2.9",
 		"php": ">5.4"
 	}
