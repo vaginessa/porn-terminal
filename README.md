@@ -10,6 +10,12 @@ Porn Terminal
 [![GitHub Stats](https://img.shields.io/badge/github-stats-ff5500.svg)](http://githubstats.com/redaxmedia/porn-terminal)
 
 
+Screenshot
+----------
+
+[![Porn Terminal](http://i.imgur.com/7qbiQnz.png)]
+
+
 Usage
 -----
 
@@ -21,7 +27,7 @@ Options
 
 ```
 -e/--api-endpoint <argument>
-     Required. API endpoint (see: https://api.porn.com
+     Required. API endpoint (see: https://api.porn.com)
 
 
 -p/--api-parameter <argument>

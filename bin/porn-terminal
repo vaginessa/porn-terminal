@@ -64,7 +64,7 @@ if ($result)
 	{
 		$image->clearColors();
 	}
-	$output .= $image . PHP_EOL;
+	$output .= $image;
 	if ($command['m'])
 	{
 		$output .= 'Title: ' . $result->title . PHP_EOL . 'URL: ' . $result->url . PHP_EOL . 'Rating: ' . $result->rating . PHP_EOL . 'Duration: ' . $result->duration . 's' . PHP_EOL;
