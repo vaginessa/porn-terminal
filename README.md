@@ -21,13 +21,15 @@ Run `php bin/porn-terminal` in your terminal.
 Examples
 --------
 
-Run `php bin/porn-terminal -p ?tags={tag}` to search for {tag} in videos.
+Run `php bin/porn-terminal -q ?tags=big-tits` to search for videos with big tits.
 
-Run `php bin/porn-terminal -e actors -q ?order=rating` for the top actors.
+Run `php bin/porn-terminal -e actors -q ?order=rating` to search for actors by rating.
 
-Run `php bin/porn-terminal -e dvds -q ?order=rating` for the top dvds.
+Run `php bin/porn-terminal -e dvds -q ?order=views` to search for dvds by views.
 
-Run `php bin/porn-terminal -p pornhub.com` to search for videos on at pornhub.com.
+Run `php bin/porn-terminal -p pornhub.com` to search for videos on pornhub.com.
+
+Run `php bin/porn-terminal -p youporn.com` to search for videos on youporn.com.
 
 
 Options
@@ -37,19 +39,23 @@ Run `php bin/porn-terminal --help` for help:
 
 ```
 -e/--api-endpoint <argument>
-     Required. API endpoint (see: https://api.porn.com)
+     Required. API endpoint. (porn.com: videos, actors, channels, dvds; pornhub.com: videos; youporn.com: videos)
 
 
--p/--api-parameter <argument>
-     API parameter (see: https://api.porn.com)
+-p/--api-provider <argument>
+     Required. API provider. (porn.com, pornhub.com, youporn.com)
+
+
+-q/--api-query <argument>
+     API query.
 
 
 -d/--image-dither
-     Dither of the image
+     Dither of the image.
 
 
 -g/--image-grayscale
-     Grayscale of the image
+     Grayscale of the image.
 
 
 --help
@@ -57,21 +63,21 @@ Run `php bin/porn-terminal --help` for help:
 
 
 -i/--image-invert
-     Invert the image
+     Invert the image.
 
 
 -m/--image-metadata
-     Metadata of the image
+     Metadata of the image.
 
 
 -r/--image-resize <argument>
-     Resize the image
+     Resize the image.
 
 
 -w/--image-weight <argument>
-     Weight of the image
+     Weight of the image.
 
 
 -o/--open-browser
-     Open URL in browser
+     Open URL in browser.
 ```

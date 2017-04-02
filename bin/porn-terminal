@@ -20,9 +20,17 @@ $providerArray =
 			'dvds' => '/dvds/find.json',
 		]
 	],
-	'pornhub.com'  =>
+	'pornhub.com' =>
 	[
 		'url' => 'https://pornhub.com',
+		'endpoint' =>
+		[
+			'videos' => '/webmasters/search'
+		]
+	],
+	'youporn.com' =>
+	[
+		'url' => 'https://www.youporn.com/api',
 		'endpoint' =>
 		[
 			'videos' => '/webmasters/search'
@@ -36,18 +44,18 @@ $command = new Commando\Command();
 $command
 	->option('p')
 	->aka('api-provider')
-	->describe('API provider. (porn.com, pornhub.com)')
+	->describe('API provider. (porn.com, pornhub.com, youporn.com)')
 	->default('porn.com')
 	->required()
 	->option('e')
 	->aka('api-endpoint')
-	->describe('API endpoint. (porn.com: videos, actors, channels, dvds; pornhub.com: videos.')
+	->describe('API endpoint. (porn.com: videos, actors, channels, dvds; pornhub.com: videos; youporn.com: videos)')
 	->default('videos')
 	->required()
 	->option('q')
 	->aka('api-query')
-    ->default('?limit=100')
 	->describe('API query.')
+	->default('?limit=1000')
 	->option('r')
 	->aka('image-resize')
 	->describe('Resize the image.')
@@ -78,24 +86,31 @@ $command
 	->describe('Open URL in browser.')
 	->boolean();
 
-/* get content */
+/* handle content */
 
 $provider = $providerArray[$command['p']];
 $url = $provider['url'] . $provider['endpoint'][$command['e']] . $command['q'];
 $content = json_decode(file_get_contents($url));
 
-/* handle result */
+/* map content */
 
 if ($content->result)
 {
-	$total = count($content->result);
-	$result = $content->result{mt_rand(0, $total)};
+	$content = $content->result;
 }
 if ($content->videos)
 {
-	$total = count($content->videos);
-	$result = $content->videos{mt_rand(0, $total)};
+	$content = $content->videos;
 }
+if ($content->video)
+{
+	$content = $content->video;
+}
+
+/* handle result */
+
+$total = count($content);
+$result = $content{mt_rand(0, $total)};
 
 /* handle image */
 
@@ -108,7 +123,7 @@ if ($result)
 	}
 	$output = $image;
 
-	/* image metadata */
+	/* handle metadata */
 
 	if ($command['m'])
 	{
@@ -128,9 +143,13 @@ if ($result)
 		{
 			$output .= 'Rating: ' . $result->rating . PHP_EOL;
 		}
+		if ($result->views)
+		{
+			$output .= 'Views: ' . $result->views . PHP_EOL;
+		}
 		if ($result->duration)
 		{
-			$output .= 'Duration: ' . $result->duration . 's' . PHP_EOL;
+			$output .= 'Duration: ' . $result->duration . PHP_EOL;
 		}
 	}
 
@@ -151,5 +170,5 @@ if ($result)
 }
 else
 {
-	$command->beepOnError();
+	exit(1);
 }
