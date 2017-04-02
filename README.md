@@ -23,9 +23,11 @@ Examples
 
 Run `php bin/porn-terminal -p ?tags={tag}` to search for {tag} in videos.
 
-Run `php bin/porn-terminal -e /actors/find.json -p ?order=rating` for the top actors.
+Run `php bin/porn-terminal -e actors -q ?order=rating` for the top actors.
 
-Run `php bin/porn-terminal -e /dvds/find.json -p ?order=rating` for the top dvds.
+Run `php bin/porn-terminal -e dvds -q ?order=rating` for the top dvds.
+
+Run `php bin/porn-terminal -p pornhub.com` to search for videos on at pornhub.com.
 
 
 Options

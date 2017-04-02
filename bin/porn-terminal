@@ -7,57 +7,95 @@ error_reporting(E_ERROR | E_PARSE);
 
 include dirname(__DIR__) . '/vendor/autoload.php';
 
+$providerArray =
+[
+	'porn.com' =>
+	[
+		'url' => 'https://api.porn.com',
+		'endpoint' =>
+		[
+			'videos' => '/videos/find.json',
+			'actors' => '/actors/find.json',
+			'channels' => '/channels/find.json',
+			'dvds' => '/dvds/find.json',
+		]
+	],
+	'pornhub.com'  =>
+	[
+		'url' => 'https://pornhub.com',
+		'endpoint' =>
+		[
+			'videos' => '/webmasters/search'
+		]
+	]
+];
+
 /* set command */
 
 $command = new Commando\Command();
 $command
+	->option('p')
+	->aka('api-provider')
+	->describe('API provider. (porn.com, pornhub.com)')
+	->default('porn.com')
+	->required()
 	->option('e')
 	->aka('api-endpoint')
-	->describe('API endpoint (see: https://api.porn.com)')
-	->default('/videos/find.json')
+	->describe('API endpoint. (porn.com: videos, actors, channels, dvds; pornhub.com: videos.')
+	->default('videos')
 	->required()
-	->option('p')
-	->aka('api-parameter')
-	->describe('API parameter (see: https://api.porn.com)')
+	->option('q')
+	->aka('api-query')
+    ->default('?limit=100')
+	->describe('API query.')
 	->option('r')
 	->aka('image-resize')
-	->describe('Resize the image')
+	->describe('Resize the image.')
 	->default(0.5)
 	->option('i')
 	->aka('image-invert')
-	->describe('Invert the image')
+	->describe('Invert the image.')
 	->boolean()
 	->option('w')
 	->aka('image-weight')
-	->describe('Weight of the image')
+	->describe('Weight of the image.')
 	->default(1)
 	->option('d')
 	->aka('image-dither')
-	->describe('Dither of the image')
+	->describe('Dither of the image.')
 	->default(1)
 	->boolean()
 	->option('g')
 	->aka('image-grayscale')
-	->describe('Grayscale of the image')
+	->describe('Grayscale of the image.')
 	->boolean()
 	->option('m')
 	->aka('image-metadata')
-	->describe('Metadata of the image')
+	->describe('Metadata of the image.')
 	->boolean()
 	->option('o')
 	->aka('open-browser')
-	->describe('Open URL in browser')
+	->describe('Open URL in browser.')
 	->boolean();
 
-/* handle content */
+/* get content */
 
-$url = 'https://api.porn.com' . $command['e'] . $command['p'];
+$provider = $providerArray[$command['p']];
+$url = $provider['url'] . $provider['endpoint'][$command['e']] . $command['q'];
 $content = json_decode(file_get_contents($url));
 
-/* randomize */
+/* handle result */
 
-$total = count($content->result);
-$result = $content->result{mt_rand(0, $total)};
+if ($content->result)
+{
+	$total = count($content->result);
+	$result = $content->result{mt_rand(0, $total)};
+}
+if ($content->videos)
+{
+	$total = count($content->videos);
+	$result = $content->videos{mt_rand(0, $total)};
+}
 
 /* handle image */
 
