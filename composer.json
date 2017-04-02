@@ -5,7 +5,7 @@
 	"license": "GPL-3.0",
 	"require":
 	{
-		"lastguest/pixeler": "dev-master",
+		"lastguest/pixeler": "1.1.2",
 		"nategood/commando": "0.2.9",
 		"php": ">5.4"
 	}
