@@ -15,31 +15,31 @@ Porn Terminal
 Usage
 -----
 
-Run `php bin/porn-terminal` in your terminal.
+Run `bin/porn-terminal` in your terminal.
 
 
 Examples
 --------
 
-Run `php bin/porn-terminal -q ?tags=big-tits` to search for videos with big tits.
+Run `bin/porn-terminal -q ?tags=big-tits` to search for videos with big tits.
 
-Run `php bin/porn-terminal -e actors -q ?order=rating` to search for actors by rating.
+Run `bin/porn-terminal -e actors -q ?order=rating` to search for actors by rating.
 
-Run `php bin/porn-terminal -e dvds -q ?order=views` to search for dvds by views.
+Run `bin/porn-terminal -e dvds -q ?order=views` to search for dvds by views.
 
-Run `php bin/porn-terminal -p pornhub.com` to search for videos on pornhub.com.
+Run `bin/porn-terminal -p pornhub.com` to search on pornhub.com.
 
-Run `php bin/porn-terminal -p youporn.com` to search for videos on youporn.com.
+Run `bin/porn-terminal -p youporn.com` to search on youporn.com.
 
 
 Options
 -------
 
-Run `php bin/porn-terminal --help` for help:
+Run `bin/porn-terminal --help` to show the help:
 
 ```
 -e/--api-endpoint <argument>
-     Required. API endpoint. (porn.com: videos, actors, channels, dvds; pornhub.com: videos; youporn.com: videos)
+     Required. API endpoint. (videos, actors, channels, dvds)
 
 
 -p/--api-provider <argument>

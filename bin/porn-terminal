@@ -49,7 +49,7 @@ $command
 	->required()
 	->option('e')
 	->aka('api-endpoint')
-	->describe('API endpoint. (porn.com: videos, actors, channels, dvds; pornhub.com: videos; youporn.com: videos)')
+	->describe('API endpoint. (videos, actors, channels, dvds)')
 	->default('videos')
 	->required()
 	->option('q')
