@@ -12,32 +12,22 @@ Porn Terminal
 ![Porn Terminal](https://i.imgur.com/tLgfkDQ.png)
 
 
+Installation
+------------
+
+```
+git clone https://github.com/redaxmedia/porn-terminal.git
+cd porn-terminal
+composer install
+```
+
+
 Usage
 -----
 
-Run `bin/porn-terminal` in your terminal.
-
-
-Examples
---------
-
-Run `bin/porn-terminal -q ?tags=big-tits` to search for videos with big tits.
-
-Run `bin/porn-terminal -e actors -q ?order=rating` to search for actors by rating.
-
-Run `bin/porn-terminal -e dvds -q ?order=views` to search for dvds by views.
-
-Run `bin/porn-terminal -p pornhub.com` to search on pornhub.com.
-
-Run `bin/porn-terminal -p youporn.com` to search on youporn.com.
-
-
-Options
--------
-
-Run `bin/porn-terminal --help` to show the help:
-
 ```
+bin/porn-terminal [options]
+
 -e/--api-endpoint <argument>
      Required. API endpoint. (videos, actors, channels, dvds)
 
@@ -80,4 +70,37 @@ Run `bin/porn-terminal --help` to show the help:
 
 -o/--open-browser
      Open URL in browser.
+```
+
+
+Examples
+--------
+
+Show videos with big tits:
+
+```
+bin/porn-terminal -q ?tags=big-tits
+```
+
+Show actors by rating:
+
+```
+bin/porn-terminal -e actors -q ?order=rating
+```
+
+Show dvds by views:
+
+```
+bin/porn-terminal -e dvds -q ?order=views
+```
+
+Show videos from pornhub.com:
+```
+bin/porn-terminal -p pornhub.com
+```
+
+Show videos from youporn.com:
+
+```
+bin/porn-terminal -p youporn.com
 ```
