@@ -21,7 +21,6 @@ install:
 - composer install
 
 script:
-- bin/porn-terminal -m
 - bin/porn-terminal -p porn.com -m
 - bin/porn-terminal -p pornhub.com -m
 - bin/porn-terminal -p redtube.com -m
