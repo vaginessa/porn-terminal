@@ -29,11 +29,11 @@ Usage
 bin/porn-terminal [options]
 
 -e/--api-endpoint <argument>
-     Required. API endpoint. (videos, actors, channels, dvds)
+     Required. API endpoint. (actors, channels, dvds, videos)
 
 
 -p/--api-provider <argument>
-     Required. API provider. (porn.com, pornhub.com, youporn.com)
+     Required. API provider. (porn.com, pornhub.com, redtube.com, spankwire.com, youporn.com)
 
 
 -q/--api-query <argument>

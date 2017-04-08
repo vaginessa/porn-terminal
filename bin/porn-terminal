@@ -14,10 +14,10 @@ $providerArray =
 		'url' => 'https://api.porn.com',
 		'endpoint' =>
 		[
-			'videos' => '/videos/find.json',
 			'actors' => '/actors/find.json',
 			'channels' => '/channels/find.json',
 			'dvds' => '/dvds/find.json',
+			'videos' => '/videos/find.json'
 		]
 	],
 	'pornhub.com' =>
@@ -26,6 +26,22 @@ $providerArray =
 		'endpoint' =>
 		[
 			'videos' => '/webmasters/search'
+		]
+	],
+	'redtube.com' =>
+	[
+		'url' => 'https://api.redtube.com',
+		'endpoint' =>
+		[
+			'videos' => '?data=redtube.Videos.searchVideos&output=json'
+		]
+	],
+	'spankwire.com' =>
+	[
+		'url' => 'https://spankwire.com/api',
+		'endpoint' =>
+		[
+			'videos' => '/HubTrafficApiCall?data=searchVideos&output=json'
 		]
 	],
 	'youporn.com' =>
@@ -44,18 +60,40 @@ $command = new Commando\Command();
 $command
 	->option('p')
 	->aka('api-provider')
-	->describe('API provider. (porn.com, pornhub.com, youporn.com)')
-	->default('porn.com')
+	->describe('API provider. (porn.com, pornhub.com, redtube.com, spankwire.com, youporn.com)')
+	->default(array_rand($providerArray))
+	->must(function ($must)
+	{
+		$mustArray =
+		[
+			'porn.com',
+			'pornhub.com',
+			'redtube.com',
+			'spankwire.com',
+			'youporn.com'
+		];
+		return in_array($must, $mustArray);
+	})
 	->required()
 	->option('e')
 	->aka('api-endpoint')
-	->describe('API endpoint. (videos, actors, channels, dvds)')
+	->describe('API endpoint. (actors, channels, dvds, videos)')
 	->default('videos')
+	->must(function ($must)
+	{
+		$mustArray =
+		[
+			'actors',
+			'channels',
+			'dvds',
+			'videos'
+		];
+		return in_array($must, $mustArray);
+	})
 	->required()
 	->option('q')
 	->aka('api-query')
 	->describe('API query.')
-	->default('?limit=1000')
 	->option('r')
 	->aka('image-resize')
 	->describe('Resize the image.')
@@ -89,7 +127,12 @@ $command
 /* handle content */
 
 $provider = $providerArray[$command['p']];
-$url = $provider['url'] . $provider['endpoint'][$command['e']] . $command['q'];
+$endpoint = $provider['endpoint'][$command['e']];
+if (!$endpoint)
+{
+	exit('API endpoint not supported!' . PHP_EOL);
+}
+$url = $provider['url'] . $endpoint . $command['q'];
 $content = json_decode(file_get_contents($url));
 
 /* map content */
@@ -111,6 +154,13 @@ if ($content->video)
 
 $total = count($content);
 $result = $content{mt_rand(0, $total)};
+
+/* map result */
+
+if ($result->video)
+{
+	$result = $result->video;
+}
 
 /* handle image */
 
@@ -170,5 +220,5 @@ if ($result)
 }
 else
 {
-	exit(1);
+	exit('No result found!' . PHP_EOL);
 }

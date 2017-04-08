@@ -22,5 +22,8 @@ install:
 
 script:
 - bin/porn-terminal -m
+- bin/porn-terminal -p porn.com -m
 - bin/porn-terminal -p pornhub.com -m
+- bin/porn-terminal -p redtube.com -m
+- bin/porn-terminal -p spankwire.com -m
 - bin/porn-terminal -p youporn.com -m
